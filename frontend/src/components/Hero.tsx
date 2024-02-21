@@ -7,7 +7,7 @@ export default function Hero() {
       <img
         src={hero}
         alt="hero image"
-        className="w-full max-h[500px] object-cover"
+        className="w-full max-h-600 object-cover"
       />
     </div>
   );
