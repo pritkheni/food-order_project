@@ -4,13 +4,17 @@ import Hero from "@/components/Hero";
 import React from "react";
 type Props = {
   children: React.ReactNode;
+  showHero?: boolean;
 };
-function Layout({ children }: Props) {
+function Layout({ children, showHero = false }: Props) {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <Hero />
-      <div className="container mx-auto flex-1">{children}</div>
+      {showHero && <Hero />}
+
+      <div className="flex container mx-auto flex-1 justify-center items-center">
+        {children}
+      </div>
       <Footer />
     </div>
   );
