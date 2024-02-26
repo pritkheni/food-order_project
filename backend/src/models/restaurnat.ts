@@ -5,7 +5,7 @@ const memuItemSchema = new mongoose.Schema({
 });
 const restaurantSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  restaturnatName: {
+  restaurantName: {
     type: String,
     require: true,
   },
@@ -21,13 +21,14 @@ const restaurantSchema = new mongoose.Schema({
     type: Number,
     require: true,
   },
+  estimatedDeliveryTime: { type: Number, required: true },
   cuisines: [
     {
       type: String,
       required: true,
     },
   ],
-  menuItem: [memuItemSchema],
+  menuItems: [memuItemSchema],
   imageUrl: {
     type: String,
     require: true,

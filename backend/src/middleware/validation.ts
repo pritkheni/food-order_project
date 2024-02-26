@@ -27,7 +27,7 @@ export const validateMyRestaurantRequest = z.object({
   cuisines: z.array(z.string()).nonempty({
     message: "please select at least one cuisine",
   }),
-  menuImtem: z.array(
+  menuItems: z.array(
     z.object({
       name: z.string().min(1, "name is require in menu items"),
       price: z.coerce
@@ -35,4 +35,8 @@ export const validateMyRestaurantRequest = z.object({
         .min(1, { message: "price is require in menu items" }),
     })
   ),
+});
+
+export const searchParmsValidation = z.object({
+  city: z.string().min(1, { message: "city can not be empty" }),
 });
