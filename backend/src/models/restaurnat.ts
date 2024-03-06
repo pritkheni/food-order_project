@@ -1,25 +1,33 @@
-import mongoose from "mongoose";
+import mongoose, { InferSchemaType } from "mongoose";
 const memuItemSchema = new mongoose.Schema({
-  name: { type: String, require: true },
-  price: { type: String, require: true },
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    default: new mongoose.Types.ObjectId(),
+  },
+  name: { type: String, required: true },
+  price: { type: Number, required: true },
 });
+
+export type MenuItemType = InferSchemaType<typeof memuItemSchema>;
+
 const restaurantSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   restaurantName: {
     type: String,
-    require: true,
+    required: true,
   },
   city: {
     type: String,
-    require: true,
+    required: true,
   },
   country: {
     type: String,
-    require: true,
+    required: true,
   },
   deliveryPrice: {
     type: Number,
-    require: true,
+    required: true,
   },
   estimatedDeliveryTime: { type: Number, required: true },
   cuisines: [
@@ -31,11 +39,11 @@ const restaurantSchema = new mongoose.Schema({
   menuItems: [memuItemSchema],
   imageUrl: {
     type: String,
-    require: true,
+    required: true,
   },
   lastUpdated: {
     type: Date,
-    require: true,
+    required: true,
   },
 });
 

@@ -12,9 +12,7 @@ function Layout({ children, showHero = false }: Props) {
       <Header />
       {showHero && <Hero />}
 
-      <div className="flex container mx-auto flex-1 justify-center items-center">
-        {children}
-      </div>
+      <div className="container mx-auto flex-1 py-10">{children}</div>
       <Footer />
     </div>
   );

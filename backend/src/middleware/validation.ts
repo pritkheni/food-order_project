@@ -40,3 +40,7 @@ export const validateMyRestaurantRequest = z.object({
 export const searchParmsValidation = z.object({
   city: z.string().min(1, { message: "city can not be empty" }),
 });
+
+export const restaurantParams = z.object({
+  restaurantId: z.string().min(1, { message: "city can not be empty" }),
+});

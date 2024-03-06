@@ -8,7 +8,7 @@ const updateUserValidation = z.object({
   country: z.string().min(1, { message: "country can not be empty" }),
 });
 
-type UserFormData = z.infer<typeof updateUserValidation>;
+export type UserFormData = z.infer<typeof updateUserValidation>;
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,12 +31,16 @@ type Props = {
   onSave: (userProfileData: UserFormData) => void;
   isLoagin: boolean;
   currentUser: User;
+  title?: string;
+  buttonText?: string;
 };
 
 export default function UserProfileForm({
   onSave,
   isLoagin,
   currentUser,
+  buttonText = "Submit",
+  title = "User Profile",
 }: Props) {
   const form = useForm<UserFormData>({
     resolver: zodResolver(updateUserValidation),
@@ -52,7 +56,7 @@ export default function UserProfileForm({
         className=" flex-1 space-y-4 bg-gray-50 rounded-lg md:p-10"
       >
         <div>
-          <h2 className="text-2xl font-bold">User Profile Form</h2>
+          <h2 className="text-2xl font-bold">{title}</h2>
           <FormDescription>
             View and change your profile information here
           </FormDescription>
@@ -128,7 +132,7 @@ export default function UserProfileForm({
           <LoadingButton />
         ) : (
           <Button type="submit" className="bg-orange-500">
-            Submit
+            {buttonText}
           </Button>
         )}
       </form>
